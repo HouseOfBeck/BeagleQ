@@ -9,8 +9,8 @@ Write the eeprom image
 
 1) Make sure the WP/WE jumper is in the WE position
 2) The A0/A1 jumpers determine the cape i2c bus address. The two jumpers give you a range 
-   from 0-4. The A2 address is fixed in hardware. Using the value set using the 
-   A0/A1 jumpers you can write the eeprom image using this command
+   from 0-3. The A2 address is fixed in hardware. Using the value set using the 
+   A0/A1 jumpers plus 4 (ie 54-57) you can write the eeprom image using this command
 
    cat beagleq-cape-2.0.eeprom > /sys/bus/i2c/drivers/at24/1-005x/eeprom 
 
