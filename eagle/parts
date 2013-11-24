@@ -1,0 +1,38 @@
+Partlist
+
+Exported from BeagleQ-v02.sch at 11/6/13 6:19 PM
+
+EAGLE Version 6.4.0 Copyright (c) 1988-2013 CadSoft
+
+Assembly variant: 
+
+Part     Value              Device             Package           Library             Sheet
+
+C1                          C-US025-025X050    C025-025X050      rcl                 1
+D2       1N4004             1N4004             DO41-10           adafruit            1
+IC2      AT24CP             AT24CP             DIL08             atmel               1
+J1       DCJ0202            DCJ0202            DCJ0202           houseofbeck         1
+J2       DCJ0202            DCJ0202            DCJ0202           houseofbeck         1
+J3       DCJ0202            DCJ0202            DCJ0202           houseofbeck         1
+JP1                         JP2E               JP2               jumper              1
+JP2                         M04PTH             1X04              SparkFun-Connectors 1
+JP3                         JP2E               JP2               jumper              1
+JP4                         JP2E               JP2               jumper              1
+JP5      RCA                RCA                RCA               SparkFun-Connectors 1
+LED1                        LED3MM             LED3MM            led                 1
+P1                          JST-PH4            JST-PH4           jst-ph              1
+Q1       TIP120             TIP120             TO220AH           transistor-power    1
+R1       2.7k               R-US_0207/10       0207/10           resistor            1
+R2       4.7k               R-US_0207/10       0207/10           resistor            1
+R3       4.7k               R-US_0207/10       0207/10           resistor            1
+R4       4.7k               R-US_0207/10       0207/10           resistor            1
+R5       5.6k               R-US_0207/10       0207/10           resistor            1
+R6       5.6k               R-US_0207/10       0207/10           resistor            1
+R7       10k                R-US_0207/10       0207/10           resistor            1
+R8       22k                R-US_0207/10       0207/10           resistor            1
+R9       22k                R-US_0207/10       0207/10           resistor            1
+R10      22k                R-US_0207/10       0207/10           resistor            1
+R11      22k                R-US_0207/10       0207/10           resistor            1
+SP1      SPEAKER/PS12       SPEAKER/PS12       PS12              adafruit            1
+SV2      Probes             JP5Q               JP5Q              jumper              1
+U$1      BEAGLEBONE_OUTLINE BEAGLEBONE_OUTLINE BEAGLEBONE_SHIELD adafruit            1

@@ -1,0 +1,51 @@
+
+This directory contains all the files needed to setup the eeprom on the
+cape and the device tree overlays on the BBB.
+
+These are the get started quick instructions. Details on customizing these
+files will come later.
+
+Write the eeprom image
+
+1) Make sure the WP/WE jumper is in the WE position
+2) The A0/A1 jumpers determine the cape i2c bus address. The two jumpers give you a range 
+   from 0-4. The A2 address is fixed in hardware. Using the value set using the 
+   A0/A1 jumpers you can write the eeprom image using this command
+
+   cat beagleq-cape-2.0.eeprom > /sys/bus/i2c/drivers/at24/1-005x/eeprom 
+
+   If you want to check that it worked you can do a 
+
+   cat /sys/devices/bone_capemgr.*/slots
+
+3) Install the device tree overlay
+
+   cp BeagleQ-02-00A0.dtbo /lib/firmware/. 
+
+4) Reboot the BBB and check that the cape is there
+
+   root@bbb-w:~# cat /sys/devices/bone_capemgr.*/slots
+   0: 54:P---L BeagleQ-Cape,00A0,HouseOfBeck,BeagleQ-02
+   1: 55:PF--- 
+   2: 56:PF--- 
+   3: 57:PF--- 
+   4: ff:P-O-L Bone-LT-eMMC-2G,00A0,Texas Instrument,BB-BONE-EMMC-2G
+   5: ff:P-O-L Bone-Black-HDMI,00A0,Texas Instrument,BB-BONELT-HDMI
+
+Write calibartion data to eeprom
+
+1) Carefully measure the values of R8, R9, R10, R11 during construction of the cape.
+2) Edit the write_calibartion.py program to include your measured values. My values
+   for this line were R8=9960, R9=9950,R10=9920,R11=9995
+
+   out_array = array('l', [9960,9950,9920,9995])
+3) Now write those values to the eeprom. The program writes the values and then
+   reads then back out to verify.
+
+   root@bbb-w:~/firmware# python write_calibration.py 
+   array('l', [9960, 9950, 9920, 9995])
+
+4) Move the WP/WE enable jumper to WP
+
+
+Now go to the demo directory and see it work.

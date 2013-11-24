@@ -1,0 +1,44 @@
+
+
+This simple python code uses the Adafruit BBIO library. First install it on
+your BBB using the instructions found here
+
+http://learn.adafruit.com/setting-up-io-python-library-on-beaglebone-black
+
+You can then run this demo to exercise all the functions on the cape.
+
+root@bbb-w:~/checkout# python demo.py
+
+Reading calibration data from eeprom ... 
+
+9960
+9950
+9920
+9995
+
+Reading ADC pins ...
+
+P9_33 P9_38 P9_37 P9_40
+
+1782.0 8.0 2.0 1637.0
+1785.0 0.0 1.0 1614.0
+1785.0 1.0 5.0 1624.0
+1785.0 1.0 6.0 1656.0
+1783.0 3.0 4.0 1664.0
+1782.0 2.0 1.0 1664.0
+1782.0 2.0 0.0 1661.0
+1783.0 3.0 4.0 1643.0
+1784.0 1.0 1.0 1661.0
+1783.0 0.0 0.0 1628.0
+
+Setting up PWM 4kHz on P9_16...buzzer test
+Tearing down... Done...buzzer test
+Setting up PWM...
+Fan...100% duty cycle
+Fan...75% duty cycle
+Fan...50% duty cycle
+Fan...25% duty cycle
+Stopping...
+Tearing down...
+Done
+

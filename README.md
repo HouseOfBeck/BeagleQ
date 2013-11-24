@@ -1,6 +1,8 @@
 BeagleQ bbq controller based on the beaglebone black platform.
 
-This is a work in progress. Please do not build boards from these
-schematics. I currently have an order in with OSH Park and will 
-provide feedback once completed. Changes/feedback are welcome.
+I've had a batch of these boards build at OSH Park and they work fine.
+There's one minor issue. One mounting hole on the headphone/RCA jacks is a wee bit to small.
+A little touch of the dremel on the pin and it fits in just fine.
 
+Functionally I'm happy with this board and will use it as the basis for my
+software developement.
