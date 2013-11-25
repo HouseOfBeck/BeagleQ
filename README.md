@@ -1,8 +1,8 @@
 BeagleQ bbq controller based on the beaglebone black platform.
 
-I've had a batch of these boards build at OSH Park and they work fine.
-There's one minor issue. One mounting hole on the headphone/RCA jacks is a wee bit to small.
-A little touch of the dremel on the pin and it fits in just fine.
+The goal here is to build a PID based BBQ controller that is fully web enabled.
 
-Functionally I'm happy with this board and will use it as the basis for my
-software developement.
+I have workign hardware now and my attention will move towards the software. The 
+plan is to do all the hardware interaction via the node web server.  All the pretty
+pictures and forms will be done in JavaScript. The plan is to make this compatible
+with smart devices such as iphone, ipads as well as standard desktop browsers.
