@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <title>beagleQ Controller</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
+        <link rel="stylesheet" type="text/css" href="css/slider.css"/>
+	<!--append ‘#!watch’ to the browser URL, then refresh the page. -->
+	
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="img/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="img/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="img/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="img/apple-touch-icon-57-precomposed.png">
+  <link rel="shortcut icon" href="img/favicon.png">
+  
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="js/bootstrap-slider.js"></script>
+    <script type="text/javascript" src="js/beagleq.js"></script>
+
+  <script type='text/javascript' src='https://www.google.com/jsapi'></script>
+
+	<script type='text/javascript'>
+
+	   google.load('visualization', '1', {packages:['gauge']});
+	   google.setOnLoadCallback(drawGauge);
+
+	   google.load("visualization", "1", {packages:["corechart"]});
+	   google.setOnLoadCallback(drawChart);
+
+	</script>
+	<script>
+            $( document ).ready(readyFN) 
+        </script>
+</head>
+
+<body>
+<section>
+<div class="container">
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<img alt="140x140" src="img/BeagleQ.png">
+			<div class="tabbable">
+				<ul class="nav nav-tabs">
+				  <li class="active" ><a href="#panel-cook" data-toggle="tab">Cook</a></li>
+			  	  <li><a href="#panel-graph" data-toggle="tab">Chart</a></li>
+			  	  <li><a href="#panel-930432" data-toggle="tab">Test</a></li>
+				  <li><a href="#panel-about" data-toggle="tab">About</a></li>
+				</ul>
+				<div class="tab-content">
+					<div class="tab-pane fade in active" id="panel-cook">
+                                            <div class='container'>
+					        <div id="gauge_div"></div>
+                                            </div>
+					    <br>
+                                            <div class='container'>
+						    <p><b>Pit Setpoint</b>
+	                                            <input type="text"
+	                                               class="slider span2"
+	                                               value=""
+						       data-slider-id="pitSlider"
+	                                               data-slider-min="120"
+                                                       data-slider-max="400"
+                                                       data-slider-step="5"
+                                                       data-slider-value="225"
+                                                       data-slider-orientation="horizontal"
+                                                       data-slider-selection="after"
+					               data-slider-tooltip="show"
+					               id="pitSL"/>
+						       <strong class="pad-left"><span id="pitSet" value="225"></span></strong>
+                                                    </p>
+                                            </div>
+                                            <br>
+                                            <div class='container'>
+						    <strong class="pad-right">Meat Setpoint</strong>
+	                                            <input type="text"
+	                                               class="slider span2"
+	                                               value=""
+	                                               data-slider-min="120"
+                                                       data-slider-max="200"
+                                                       data-slider-step="5"
+                                                       data-slider-value="180"
+                                                       data-slider-orientation="horizontal"
+                                                       data-slider-selection="after"
+					               data-slider-tooltip="show"
+					               id="meatSL"/>
+						       <strong class="pad-left"><span id="meat1Set" value="180"></span></strong>
+                                            </div>
+                                            <br>
+                                            <div class='container'>
+					      <strong class="pad-left">PID Control: </strong>
+					      <div class="btn-group btn-toggle">
+					  	   <button id="pidOn" class="btn btn-success">On</button>
+					   	   <button id="pidOff" class="btn btn-danger" active>Off</button>
+					       </div>
+                                            </div>
+                                            <br>
+                                            <div class='container'>
+	                                       <button class="btn btn-danger disabled" id="piezo">
+						  <span class="glyphicon glyphicon-volume-off"></span> 
+	                                       </button>
+	                                       <button class="btn btn-danger" id="fan">
+						  <span class="glyphicon glyphicon-fire"></span> 
+	                                       </button>
+                                            </div>
+					    <br>
+                                            <div class='container'>
+						    <div class="alert alert-info">
+						       <h4>Topic = <span id="iStatus"></span></h4>
+						       <h4>Info = <span id="iInfo"></span></h4>
+						    </div>
+						    <div class="alert alert-info" id="pitAlertPanel">
+						       <h4>PIT Temp = <span id="pitTemp"></span></h4>
+						    </div>
+						    <div class="alert alert-info" id="meat1AlertPanel">
+						       <h4>MEAT1 Temp = <span id="meat1Temp"></span></h4>
+						    </div>
+                                            </div>
+					</div>
+
+					<div class="tab-pane fade" id="panel-graph">
+                                          <div class='container'>
+					        <div id="chart_div"></div>
+				  	  </div>
+				       </div>
+
+					<div class="tab-pane fade" id="panel-930432">
+
+                                            <div class='container'>
+					       <input type="number" min="0" max="100" step="5" value="75" id="fanSL" name="Fan Duty Cycle">
+                                            </div>
+                                            <br>
+                                            <div class='container'>
+						    <input type="checkbox" checked 
+						         data-on-color="success" data-off-color="warning" id="fanSW"/>
+                                            </div>
+                                       </div>
+
+					<div class="tab-pane fade" id="panel-about">
+					 <div class="panel panel-default">
+					  <div class="panel-heading">BeagleBone Black Info</div>
+					    <div class="panel-body">
+						<h4>Name = <span id="beagleName"></span></h4>
+						<h4>Version = <span id="beagleVersion"></span></h4>
+						<h4>SerialNumber = <span id="beagleSN"></span></h4>
+						<h4>Bonescript = <span id="beagleBonescript"></span></h4>
+				  	    </div>
+					  </div>
+					 <div class="panel panel-default">
+					  <div class="panel-heading">BeagleQ Info</div>
+					    <div class="panel-body">
+					       <iframe src="b.html" frameborder=0 seamless></iframe>
+				  	    </div>
+					  </div>
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+</section>
+</body>
+</html>
