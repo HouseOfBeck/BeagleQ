@@ -29,10 +29,10 @@ R4       4.7k               R-US_0207/10       0207/10           resistor       
 R5       5.6k               R-US_0207/10       0207/10           resistor            1
 R6       5.6k               R-US_0207/10       0207/10           resistor            1
 R7       10k                R-US_0207/10       0207/10           resistor            1
-R8       22k                R-US_0207/10       0207/10           resistor            1
-R9       22k                R-US_0207/10       0207/10           resistor            1
-R10      22k                R-US_0207/10       0207/10           resistor            1
-R11      22k                R-US_0207/10       0207/10           resistor            1
+R8       10k                R-US_0207/10       0207/10           resistor            1
+R9       10k                R-US_0207/10       0207/10           resistor            1
+R10      10k                R-US_0207/10       0207/10           resistor            1
+R11      10k                R-US_0207/10       0207/10           resistor            1
 SP1      SPEAKER/PS12       SPEAKER/PS12       PS12              adafruit            1
 SV2      Probes             JP5Q               JP5Q              jumper              1
 U$1      BEAGLEBONE_OUTLINE BEAGLEBONE_OUTLINE BEAGLEBONE_SHIELD adafruit            1
