@@ -1,8 +1,3 @@
 BeagleQ bbq controller based on the beaglebone black platform.
 
-The goal here is to build a PID based BBQ controller that is fully web enabled.
-
-I have working hardware now and my attention will move towards the software. The 
-plan is to do all the hardware interaction via the node web server.  All the pretty
-pictures and forms will be done in JavaScript. The plan is to make this compatible
-with smart devices such as iphone, ipads as well as standard desktop browsers.
+The BeagleQ is a wifi enabled wireless intelligent bbq smoker controller. This device is designed to control a fan connected to the smoker's input vent/damper. Using a temperature probe placed in the pit the controller can read the pit temperature and then adjust the fan speed to act as a bellows to cause the coals to heat up and raise the pit temperature. The fan shuts down when the desired temperature is reached. By continually monitoring the temperature and adjusting the fan speed the controller can insure a smooth low and slow cook.
