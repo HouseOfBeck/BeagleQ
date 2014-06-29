@@ -74,7 +74,7 @@ function drawGauge() {
 }
 
 function readyFN() {
-	   var host = '192.168.1.19';
+	   var host = '192.168.1.76';
 	   var port = '8086';
 
 	   var ws = new WebSocket('ws://' + host + ':' + port);

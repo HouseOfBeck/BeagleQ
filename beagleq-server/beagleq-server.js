@@ -11,6 +11,9 @@ SIM_MODE = 0;
 if (process.argv.indexOf("--sim") > -1) {
   console.log("Running in simulation mode");
   SIM_MODE = 1;
+} else if (process.argv.indexOf("--display") > -1) {
+  console.log("Running with external display");
+  DISPLAY = 1;
 }
 
 pitTemp = 0 ;
@@ -29,22 +32,52 @@ var A = 0;
 var B = 0;
 var C = 0;
 
-var R11 = 0; // P9_40
+var R11 = 0; // P9_39
 var R10 = 0; // P9_37
-var R9 = 0; // P9_38
+var R9 = 0; // P9_35
 var R8 = 0; // P9_33
 
-var PIT = 'P9_40';
+var PIT = 'P9_39';
 var MEAT1 = 'P9_37';
-var MEAT2 = 'P9_38';
+var MEAT2 = 'P9_35';
 var MEAT3 = 'P9_33';
-var FAN = 'P8_19';
+var FAN = 'P9_16';
+
+b.pinMode(FAN, b.OUTPUT);
 
 var sim_temperature = [];
 var i = 0;
 var pidToggle = 0;
 
 var myPID = new PID(0, 0, pitSet ,2,5,1, 0);
+
+
+if (DISPLAY) {
+   var d = require('./ht16k33');
+   d.start();
+}
+
+function displayTemperature(temp) {
+    console.log('Temperature = ',temp);
+
+    var hundred = Math.floor(temp / 100);
+    if (hundred == 0) {
+         d.writeDigitRaw(0, 0x00);
+    } else {
+         d.writeDigit(0, hundred);
+    }
+    var ten = temp % 100;
+    if ((Math.floor(ten/10) == 0) && (hundred == 0)) {
+         d.writeDigitRaw(1, 0x00);
+    } else {
+         d.writeDigit(1, Math.floor(ten/10));
+    }
+    var one = ten % 10;
+    d.writeDigit(3, Math.floor(one), 1);
+    frac = Math.floor((one * 10) % 10);
+    d.writeDigit(4, frac);
+    d.writeDisplay();
+}
 
 function initSim() {
 
@@ -221,6 +254,7 @@ wss.on('connection', function(ws) {
          case "pitSL":
             console.log("Pit Slider: " + obj.data);
 	    pitSet = obj.data;
+	    myPID.SetSetPoint(pitSet);
 	    break;
          case "meatSL":
             console.log("Meat Slider: " + obj.data);
@@ -238,6 +272,9 @@ wss.on('connection', function(ws) {
      if (pidToggle) {
         output = myPID.Compute(pitTemp);
         fanControl(output);
+     }
+     if (DISPLAY) {
+       displayTemperature(pitTemp);
      }
      lastJSON = JSON.stringify({"topic":"temperatures","created_at":(new Date()),"pitSet":pitSet.toFixed(0),"pitTemp":pitTemp.toFixed(2),"meat1Set":meat1Set.toFixed(0),"meat1Temp":meat1Temp.toFixed(2),"fanSpeed":output.toFixed(2)});
      console.log(lastJSON);
@@ -261,10 +298,10 @@ wss.on('connection', function(ws) {
 
    function fanControl(speed) {
      if (speed > 0.5) {
-        b.analogWrite(FAN,output,20000);
+        b.analogWrite(FAN,output,2900);
         ws.send(JSON.stringify({"topic":"fanStatus", "state":"1"}));
      } else {
-        b.analogWrite(FAN,0,20000);
+        b.analogWrite(FAN,0,2900);
         ws.send(JSON.stringify({"topic":"fanStatus", "state":"0"}));
      }
    };

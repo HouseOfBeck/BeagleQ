@@ -1,0 +1,31 @@
+{
+  "probes": [
+    {
+      "Manufacturer": "Maverick", 
+      "Model": "ET-73", 
+      "Steinhart": {
+          "A": 0.2284143823e-3,
+          "B": 2.373151289e-4,
+          "C": 1.249333734e-7
+        }
+    },
+    {
+      "Manufacturer": "Radio Shack", 
+      "Model": "271-110", 
+      "Steinhart": {
+          "A": 0.8915718359e-3, 
+          "B": 2.508830020e-4, 
+          "C": 1.941936995e-7
+        }
+    },
+    {
+      "Manufacturer": "Dincio", 
+      "Model": "NTC-100k", 
+      "Steinhart": {
+          "A": 0.7813084813e-03,
+          "B": 2.052897969e-04,
+          "C": 1.393404260e-07
+        }
+    }
+  ]
+}
