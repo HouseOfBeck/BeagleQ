@@ -7,6 +7,7 @@ var WebSocketServer = require('ws').Server;
 var PID = require('./PID_v1.js');
 
 SIM_MODE = 0;
+DISPLAY = 0;
 
 if (process.argv.indexOf("--sim") > -1) {
   console.log("Running in simulation mode");
